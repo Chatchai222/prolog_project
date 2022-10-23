@@ -50,6 +50,10 @@ Infix notation: 2 * (7 - 3)
 Input: 2 7 3 s m
 Output: 8
 
+Infix notation: (17 - 3) / 7
+Input: 17 3 - 7 /
+Output: 2
+
 Input: 8 5 s 4 2 a 3 d m 
 Ouput: 6
 */
