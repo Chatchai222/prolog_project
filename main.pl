@@ -144,7 +144,8 @@ valid_rpn(NumList, RPNNotation, RPNResult):-
 
 % Solve countdown
 solve_countdown(NumList, Target, RPNNotation):-
-    valid_rpn(NumList, RPNNotation, Target).
+    valid_rpn(NumList, RPNNotation, Target),
+    write(RPNNotation).
 
 
 
