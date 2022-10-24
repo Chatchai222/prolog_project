@@ -13,18 +13,7 @@ Output: 8 5 - 4 2 + 3 / *
 https://en.wikipedia.org/wiki/Shunting_yard_algorithm
 */
 
-% shunting_yard(Output, Stack_operator, Infix_notation)
-shunting_yard([], X, X):- !.
-
-% Token is a number
-shunting_yard([A|B], C, [A|D]):-
-    number(A),
-    shunting_yard(B, C, D).
-
-% Token is a add operator
-shunting_yard(A, C, [+|D]):-
-    shunting_yard(A, [+|C], D).
-
+% stud.
 
     
 
