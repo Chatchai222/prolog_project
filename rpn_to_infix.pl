@@ -9,16 +9,15 @@ Input: 8 5 s 4 2 a 3 d m
 Output: ((8 - 5) * ((4 + 2) / 3 ))
 Calculated notation: 6
 */
+:- module(rpn_to_infix,
+    [
+        get_infix/2
+    ]
+).
 
 :- use_module(rpn_calculator, 
     [
         operator/1
-    ]
-).
-
-:- module(rpn_to_infix, 
-    [
-        get_infix/2
     ]
 ).
 
