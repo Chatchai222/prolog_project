@@ -57,15 +57,21 @@ pop([X|S], X, S).
 % calculate_rpn(8, [], [2,7,3,s,m])
 calculate_rpn(Result, [Result], []):- !.
 
-% Incoming infix token is number
-% Example cases:
-% calculate_rpn(8, [], [2|7,3,s,m]):-
-%   number(2),
-%   calculate_rpn(8, [2], [7,3,s,m]).
-% -----------
-% calculate_rpn(8, [7,2], [3|s,m]):-
-%   number(3),
-%   calculate_rpn(8, [3,7,2], [s,m]).
+/*
+Incoming infix token is number
+Example cases:
+calculate_rpn(8, [], [2|7,3,s,m]):-
+    number(2),
+    push(8, [], [8]),
+    !,
+    calculate_rpn(8, [2], [7,3,s,m]).
+-----------
+calculate_rpn(8, [7,2], [3|s,m]):-
+    number(3),
+    push(3, [7,2], [3,7,2]),
+    !,
+    calculate_rpn(8, [3,7,2], [s,m]).
+*/
 calculate_rpn(R, S, [Num|T]):-
     number(Num),
     push(Num, S, PushedStack),
@@ -82,14 +88,16 @@ calculate_rpn(X, S, [Operator|T]):-
     !,
     calculate_rpn(X, [Operated_result|S2], T).
 
-% Incoming infix token is "s" (which is substract or '-')
-% Example case:
-% calculate_rpn(8, [3,7,2], [S|m]):-
-%   S = s,
-%   pop([3,7,2], 3, [7,2]),
-%   pop([7,2], 7, [_|2]),
-%   operator_result is 7 - 3,
-%   calculate_rpn(8, [operator_result|2], [m]).
+/*
+Incoming infix token is "s" (which is substract or '-')
+Example case:
+calculate_rpn(8, [3,7,2], [s|m]):-
+    s = operator(s),
+    pop([3,7,2], 3, [7,2]),
+    pop([7,2], 7, [2]),
+    Operator_result is 7 - 3,
+    calculate_rpn(8, [Operator_result|2], [m]).
+*/
 calculate_rpn(X, S, [Operator|T]):-
     operator(Operator) = operator(s),
     pop(S, Operand1, S1),
