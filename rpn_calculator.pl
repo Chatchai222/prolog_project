@@ -18,6 +18,7 @@ Infix notation: (17 - 3) / 7
 Input: 17 3 - 7 /
 Output: 2
 
+Infix notation: ((8 - 5) * ((4 + 2) / 3 ))
 Input: 8 5 s 4 2 a 3 d m 
 Ouput: 6
 */

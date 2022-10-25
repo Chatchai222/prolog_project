@@ -47,8 +47,21 @@ get_valid_rpn(NumList, RPNNotation, RPNResult):-
 
 % Solve countdown
 solve_countdown(NumList, Target, RPNNotation):-
-    get_valid_rpn(NumList, RPNNotation, Target),
-    write(RPNNotation).
+    get_valid_rpn(NumList, RPNNotation, Target).
+
+
+
+
+
+
+    
+    
+
+    
+    
+    
+    
+    
 
 
 
