@@ -24,7 +24,7 @@ all_operator([H|T]):-
     all_operator(T).
 
 % Get a combination with repetition with combination list
-get_operator_combination_with_reptition_list(Len, X):-
+get_operator_combination_with_repetition_list(Len, X):-
     length(X, Len),
     all_operator(X),
     is_sorted(X).
@@ -42,7 +42,7 @@ concat_list([H|List1], X, [H|List3]):-
 get_number_operator_list(NumList, X):-
     length(NumList, NumListLength),
     OperatorListLength is NumListLength-1,
-    get_operator_combination_with_reptition_list(OperatorListLength, OperatorList),
+    get_operator_combination_with_repetition_list(OperatorListLength, OperatorList),
     concat_list(NumList, OperatorList, X).
 
 % Get valid RPN notation
