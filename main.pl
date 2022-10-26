@@ -7,6 +7,16 @@
     ]
 ).
 
+% Check if list is sorted in ascending order
+is_head([Head|_], Head).
+
+is_sorted([]).
+is_sorted([_]).
+is_sorted([Head|Tail]):-
+    is_sorted(Tail),
+    is_head(Tail, SortedListHead),
+    Head =< SortedListHead.
+
 % All item inside list is operator
 all_operator([]).
 all_operator([H|T]):-
@@ -16,8 +26,9 @@ all_operator([H|T]):-
 % Get a list of operator at a certain length
 get_operator_list(Len, X):-
     length(X, Len),
-    all_operator(X).
-
+    all_operator(X),
+    is_sorted(X).
+    
 % Concatenation of list
 % List1 + List2 = List3
 concat_list([], List, List).

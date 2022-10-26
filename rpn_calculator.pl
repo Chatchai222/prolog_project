@@ -34,10 +34,10 @@ Ouput: 6
 
 % --- Public API for this module --- %
 
-operator(a).    % Add      or '+' 
-operator(s).    % Subtract or '-'
-operator(m).    % Multiply or '*'
-operator(d).    % Divide   or '/'
+operator("a").    % Add      or '+' 
+operator("s").    % Subtract or '-'
+operator("m").    % Multiply or '*'
+operator("d").    % Divide   or '/'
 
 get_rpn_result(RPNNotation, Result):-
     calculate_rpn(Result, [], RPNNotation).
@@ -81,7 +81,7 @@ calculate_rpn(R, S, [Num|T]):-
 % Incoming infix token is "a" (which is addition or '+')
 % (Explaination is better for subtract case)
 calculate_rpn(X, S, [Operator|T]):-
-    operator(Operator) = operator(a),
+    operator(Operator) = operator("a"),
     pop(S, Operand1, S1),
     pop(S1, Operand2, S2),
     Operated_result is Operand2 + Operand1,
@@ -99,7 +99,7 @@ calculate_rpn(8, [3,7,2], [s|m]):-
     calculate_rpn(8, [Operator_result|2], [m]).
 */
 calculate_rpn(X, S, [Operator|T]):-
-    operator(Operator) = operator(s),
+    operator(Operator) = operator("s"),
     pop(S, Operand1, S1),
     pop(S1, Operand2, S2),
     Operated_result is Operand2 - Operand1,
@@ -108,7 +108,7 @@ calculate_rpn(X, S, [Operator|T]):-
 
 % Incoming infix token is "m" (which is multiple or '*')
 calculate_rpn(X, S, [Operator|T]):-
-    operator(Operator) = operator(m),
+    operator(Operator) = operator("m"),
     pop(S, Operand1, S1),
     pop(S1, Operand2, S2),
     Operated_result is Operand2 * Operand1,
@@ -117,7 +117,7 @@ calculate_rpn(X, S, [Operator|T]):-
 
 % Incoming infix token is "d" (which is multiple or '/')
 calculate_rpn(X, S, [Operator|T]):-
-    operator(Operator) = operator(d),
+    operator(Operator) = operator("d"),
     pop(S, Operand1, S1),
     pop(S1, Operand2, S2),
     Operand1 \= 0,
