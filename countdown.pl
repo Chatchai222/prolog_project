@@ -56,7 +56,7 @@ concat_list([H|List1], X, [H|List3]):-
 
 % Get a concatenated list from number list then operator list
 % such that len(numList) = len(operatorList) + 1
-% The result will be all number_list + all possible selection of operator
+% The result will be all number_list + all possible combination of operator
 % Input: ([2,7,3], X) // [2,7,3,a,a] [2,7,3,a,s] [2,7,3,a,m] ... [2,7,3,d,d]
 get_number_operator_list(NumList, X):-
     length(NumList, NumListLength),
