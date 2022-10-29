@@ -6,6 +6,11 @@
         get_rpn_result/2
     ]
 ).
+:- use_module(rpn_to_infix, 
+    [
+        get_infix/2
+    ]
+).
 
 % Check if list is sorted in ascending order
 is_head([Head|_], Head).
@@ -56,10 +61,14 @@ get_valid_rpn(NumList, RPNNotation, RPNResult):-
     permutation(NumOperatorList, RPNNotation),
     get_rpn_result(RPNNotation, RPNResult). % if can calculate then the notation is valid
 
-% Solve countdown
-solve_countdown(NumList, Target, RPNNotation):-
+% Solve countdown which return RPN
+get_countdown_rpn(NumList, Target, RPNNotation):-
     get_valid_rpn(NumList, RPNNotation, Target).
 
+% Solve countdown 
+get_countdown_infix(NumList, Target, InfixNotation):-
+    get_countdown_rpn(NumList, Target, RPNNotation),
+    get_infix(RPNNotation, InfixNotation).
 
 
 

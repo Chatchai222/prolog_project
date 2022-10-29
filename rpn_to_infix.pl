@@ -24,8 +24,7 @@ Calculated notation: 6
 % --- Public API --- %
 
 get_infix(RPN, Infix):-
-    rpn_to_infix(RPN, [], Infix),
-    write(Infix).
+    rpn_to_infix(RPN, [], Infix).
 
 % --- End of Public API --- %
 
