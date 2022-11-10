@@ -26,16 +26,6 @@ get_countdown_infix(NumList, Target, InfixNotation):-
 % ----- End of public API ----- %
 
 
-% Check if list is sorted in ascending order
-is_head([Head|_], Head).
-
-is_sorted([]).
-is_sorted([_]).
-is_sorted([Head|Tail]):-
-    is_sorted(Tail),
-    is_head(Tail, SortedListHead),
-    Head =< SortedListHead.
-
 % All item inside list is operator
 all_operator([]).
 all_operator([H|T]):-
@@ -44,9 +34,9 @@ all_operator([H|T]):-
 
 % Get a combination with repetition with combination list
 get_operator_combination_with_repetition_list(Len, X):-
-    length(X, Len),
+    length(X, Len), % produce list of holding variable such as [_, _, _,]
     all_operator(X),
-    is_sorted(X).
+    msort(X, X). % Check if list is sorted, does not remove duplicates 
     
 % Concatenation of list
 % List1 + List2 = List3
